@@ -25,7 +25,7 @@ const StartQuiz: React.FC = () => {
     <div className="flex justify-center">
       <div className="flex flex-col gap-2">
         <Fieldset>
-          <Legend className="text-2xl font-semibold text-base-content text-opacity-80">Take random quiz</Legend>
+          <Legend className="mb-8 text-2xl font-semibold text-center text-base-content text-opacity-80">Take a quiz</Legend>
           <Field>
             <Label className="label">How many questions?</Label>
             <Input
