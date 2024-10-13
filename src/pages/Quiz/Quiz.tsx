@@ -4,8 +4,11 @@ import _ from 'lodash';
 import { getData } from '../../api/getData';
 import QuestionPanel from '../../components/Question/QuestionPanel';
 import { Question } from '../../types/types';
+import { useQuizContext } from '../../context/useQuizContext';
 
 const Quiz: React.FC = () => {
+  const { state } = useQuizContext();
+
   const result = useQuery({
     queryKey: ['questions'],
     queryFn: () => getData(),
@@ -13,7 +16,7 @@ const Quiz: React.FC = () => {
 
   const questions = useMemo(() => {
     if (!result.isLoading) {
-      return _.shuffle(result.data.results);
+      return _.shuffle(result.data.results).slice(0, state.numberOfQuestions);
     }
   }, [result.isLoading]);
 
