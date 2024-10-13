@@ -1,50 +1,34 @@
-# React + TypeScript + Vite
+# A quiz app
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A basic quiz application, building a quiz from a selected number of questions randomly pulled from a small pool.
 
-Currently, two official plugins are available:
+The application is deployed to Github Pages here - (https://joeharper85.github.io/cint-tech-test)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Running locally
+Clone this repo and run
 
-## Expanding the ESLint configuration
+```npm install```
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+```npm run dev```
 
-- Configure the top-level `parserOptions` property like this:
+Tests are executed via
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+```npm run test```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Architecture
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### Technologies used
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- **React/Vite** The aplication is built in React and Vite
+- **React Router** Providing routing via a datarouter
+- **React Query** Management of data retrieived from 'api'
+- **HeadlessUI** Headless components with built in accesibility
+- **TailwindCSS** Styling via utility classes
+- **DaisyUI** Theming and useful tailwind shothands for commonly used components
+- **Vitest and React Testing Library** Unit testing in Vite/React - note that tests are a minimal token effort for this demo application
+- **Lodash and Html-Entities** some basic utility functions
+- **Github Actions/Github Pages** CI and deployment
+
+### Observations
+- It would be interesting if given a larger pool of questions to add a custom quiz builder which allows choice of category/difficulty
+- Github Pages isn't really designed for SPAs, so trying to directly access any of the routes or refreshing causes a 404. This would be solved by hosting somewhere else but Github Pages is free and readily available
