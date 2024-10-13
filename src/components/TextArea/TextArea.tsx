@@ -15,7 +15,7 @@ const TextArea: React.FC<TextAreaProps> = (props) => {
       rows={3}
       onChange={(e) => {
         clearTimeout(debouncerRef.current);
-        debouncerRef.current = setTimeout(() => onChangeProp(e.target.value), 300);
+        debouncerRef.current = setTimeout(() => onChangeProp(e.target.value), 500);
       }}
     />
   );

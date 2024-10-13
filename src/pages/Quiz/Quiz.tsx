@@ -1,12 +1,11 @@
 import React, { useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
+import _ from 'lodash';
 import { getData } from '../../api/getData';
 import QuestionPanel from '../../components/Question/QuestionPanel';
-import { useQuizContext } from '../../context/useQuizContext';
+import { Question } from '../../types/types';
 
 const Quiz: React.FC = () => {
-  const { state } = useQuizContext();
-
   const result = useQuery({
     queryKey: ['questions'],
     queryFn: () => getData(),
@@ -14,7 +13,7 @@ const Quiz: React.FC = () => {
 
   const questions = useMemo(() => {
     if (!result.isLoading) {
-      return result.data.results.sort(() => 0.5 - Math.random()).slice(0, state.numberOfQuestions);
+      return _.shuffle(result.data.results);
     }
   }, [result.isLoading]);
 
@@ -34,7 +33,7 @@ const Quiz: React.FC = () => {
 
   return (
     <div className="flex justify-center">
-      <QuestionPanel questions={questions} />
+      <QuestionPanel questions={questions as Question[]} />
     </div>
   );
 };

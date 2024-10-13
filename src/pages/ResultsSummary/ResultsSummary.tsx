@@ -18,13 +18,22 @@ const ResultsSummary: React.FC = () => {
       <div className="flex flex-col gap-2 prose w-96">
         <p className="text-2xl font-semibold text-center text-base-content text-opacity-80">Summary</p>
         <span>
-          Correct: <span className="font-bold">{state.correctAnswers}</span>
+          Correct:{' '}
+          <span className="font-bold" data-testid="summary-correct">
+            {state.correctAnswers}
+          </span>
         </span>
         <span>
-          Wrong: <span className="font-bold">{state.numberOfQuestions - state.correctAnswers}</span>
+          Wrong:{' '}
+          <span className="font-bold" data-testid="summary-wrong">
+            {state.numberOfQuestions - state.correctAnswers}
+          </span>
         </span>
         <span>
-          Questions answered: <span className="font-bold">{state.numberOfQuestions}</span>
+          Questions answered:{' '}
+          <span className="font-bold" data-testid="summary-answered">
+            {state.numberOfQuestions}
+          </span>
         </span>
         <span>
           Final score:{' '}

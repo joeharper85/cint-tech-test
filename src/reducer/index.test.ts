@@ -18,4 +18,18 @@ describe('Test context reducer', () => {
     expect(state.numberOfQuestions).toBe(15);
     expect(newState.numberOfQuestions).toBe(10);
   });
+
+  it('Correctly sets number of questions', () => {
+    const state = initialState;
+    const newState: QuizContextType = reducer(state, { type: ActionTypes.SET_NUMBER_OF_QUESTIONS, payload: 15 });
+    expect(state.numberOfQuestions).toBe(10);
+    expect(newState.numberOfQuestions).toBe(15);
+  });
+
+  it('Correctly adds correct answer', () => {
+    const state = initialState;
+    const newState: QuizContextType = reducer(state, { type: ActionTypes.ADD_CORRECT_ANSWER });
+    expect(state.correctAnswers).toBe(0);
+    expect(newState.correctAnswers).toBe(1);
+  });
 });

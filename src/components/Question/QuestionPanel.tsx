@@ -1,12 +1,13 @@
 import React, { ReactNode, useMemo, useState } from 'react';
 import { Button } from '@headlessui/react';
 import { useNavigate } from 'react-router-dom';
+import { decode } from 'html-entities';
+import _ from 'lodash';
 import { Question, QuestionType } from '../../types/types';
 import RadioGroup from '../RadioGroup/RadioGroup';
 import TextArea from '../TextArea/TextArea';
 import { useQuizContext } from '../../context/useQuizContext';
 import { ActionTypes } from '../../actions';
-import { decode } from 'html-entities';
 
 export type QuestionProps = {
   questions: Question[];
@@ -23,9 +24,7 @@ const QuestionPanel: React.FC<QuestionProps> = (props) => {
 
   const getQuestion = (question: Question): ReactNode => {
     if ([QuestionType.Multiple, QuestionType.Boolean].includes(question.type)) {
-      const allAnswers: string[] = [question.correct_answer, ...(question.incorrect_answers as string[])].sort(
-        () => 0.5 - Math.random(),
-      );
+      const allAnswers: string[] = _.shuffle([question.correct_answer, ...(question.incorrect_answers as string[])]);
       return (
         <RadioGroup
           values={allAnswers}
