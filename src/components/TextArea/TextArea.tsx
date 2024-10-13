@@ -13,9 +13,9 @@ const TextArea: React.FC<TextAreaProps> = (props) => {
     <Textarea
       className="resize-none textarea textarea-bordered w-80"
       rows={3}
-      onChange={(e) => {
+      onInput={(e) => {
         clearTimeout(debouncerRef.current);
-        debouncerRef.current = setTimeout(() => onChangeProp(e.target.value), 500);
+        debouncerRef.current = setTimeout(() => onChangeProp((e.target as HTMLTextAreaElement).value), 500);
       }}
     />
   );
